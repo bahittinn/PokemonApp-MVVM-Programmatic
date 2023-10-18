@@ -7,23 +7,24 @@
 
 import UIKit
 
+protocol PokemonViewControllerInterface: AnyObject {
+    func configureVC()
+}
+
 class PokemonViewController: UIViewController {
 
+    private let viewmodel = PokemonViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        title = "Pokemons"
-        fetchPokemons()
     }
     
-    func fetchPokemons() {
-        NetworkManager.shared.FetchPokemons(with: Constants.apiurl) { response in
-            switch response {
-            case .success(let pokemons):
-                print(pokemons)
-            case .failure(let error):
-                print(error)
-            }
-        }
+    
+}
+
+extension PokemonViewController: PokemonViewControllerInterface {
+    func configureVC() {
+        view.backgroundColor = .systemBackground
+        title = "Pokemons"
     }
 }
