@@ -22,14 +22,17 @@ class PokemonViewModel {
 extension PokemonViewModel: PokemonViewModelInterface {
     func viewDidLoad() {
         view?.configureVC()
+        view?.configureCollectionView()
         fetchPokemons()
     }
     
     func fetchPokemons() {
-        NetworkManager.shared.FetchPokemons(with: Constants.apiurl) { response in
+        NetworkManager.shared.FetchPokemons(with: Constants.apiurl) { [weak self] response in
+            guard let self = self else  { return }
+            
             switch response {
             case .success(let pokemons):
-                print(pokemons)
+                self.pokemons = pokemons.results ?? []
             case .failure(let error):
                 print(error)
             }
