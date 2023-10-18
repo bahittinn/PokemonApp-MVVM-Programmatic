@@ -10,11 +10,13 @@ import UIKit
 protocol PokemonViewControllerInterface: AnyObject {
     func configureVC()
     func configureCollectionView()
+    func configureFlowLayout() -> UICollectionViewFlowLayout
+    func reloadCollectionView()
 }
 
 class PokemonViewController: UIViewController {
 
-    private var  collectionView: UICollectionView!
+    private var collectionView: UICollectionView!
     
     private let viewmodel = PokemonViewModel()
     
@@ -33,10 +35,43 @@ extension PokemonViewController: PokemonViewControllerInterface {
     }
     
     func configureCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureFlowLayout())
+        collectionView.register(PokemonCell.self, forCellWithReuseIdentifier: PokemonCell.reuseId)
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.pinToEdges(in: view)
-        collectionView.backgroundColor = .red
+        collectionView.delegate   = self
+        collectionView.dataSource = self
+    }
+    
+    func configureFlowLayout() -> UICollectionViewFlowLayout {
+        let width = view.bounds.width
+        let padding: CGFloat = 12
+        let minimumItemSpacing: CGFloat = 10
+        let availableWidth = width - (padding * 2) - (minimumItemSpacing * 2)
+        let itemWidth = availableWidth / 3
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
+        
+        return layout
+    }
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+}
+
+extension PokemonViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewmodel.pokemons.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCell.reuseId, for: indexPath) as! PokemonCell
+        cell.setCell(pokeName: "deneme")
+        return cell
     }
 }

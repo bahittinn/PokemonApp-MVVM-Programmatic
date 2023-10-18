@@ -33,6 +33,10 @@ extension PokemonViewModel: PokemonViewModelInterface {
             switch response {
             case .success(let pokemons):
                 self.pokemons = pokemons.results ?? []
+                DispatchQueue.main.async {
+                    self.view?.reloadCollectionView()
+                }
+
             case .failure(let error):
                 print(error)
             }
