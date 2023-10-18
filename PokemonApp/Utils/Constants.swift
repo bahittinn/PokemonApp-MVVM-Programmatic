@@ -8,5 +8,5 @@
 import Foundation
 
 enum Constants {
-    static let apiurl = "https://pokeapi.co/"
+    static let apiurl = "https://pokeapi.co/api/v2/pokemon?offset=10&limit=20"
 }

@@ -7,6 +7,14 @@
 
 import Foundation
 
-struct Pokemon: Codable {
-    
+// MARK: - Pokemon
+struct Pokemon: Codable { 
+    let results: [Pokemons]?
 }
+
+// MARK: - Result
+struct Pokemons: Codable {
+    let name: String?
+    let url: String?
+}
+
