@@ -71,7 +71,8 @@ extension PokemonViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCell.reuseId, for: indexPath) as! PokemonCell
-        cell.setCell(pokeName: "deneme")
+        let pokemon = viewmodel.pokemons[indexPath.row].name
+        cell.setCell(pokeName: pokemon ?? "weedle")
         return cell
     }
 }

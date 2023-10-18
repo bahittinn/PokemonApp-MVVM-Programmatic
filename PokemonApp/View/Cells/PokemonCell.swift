@@ -13,9 +13,9 @@ class PokemonCell: UICollectionViewCell {
     private let ImageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .lightGray
+        iv.contentMode = .scaleToFill
         iv.layer.cornerRadius = 10
+        iv.backgroundColor = .systemGray6
         return iv
     }()
     
@@ -23,6 +23,7 @@ class PokemonCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 15)
+        label.textColor = .label
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.adjustsFontSizeToFitWidth = true
@@ -41,6 +42,7 @@ class PokemonCell: UICollectionViewCell {
     
     func setCell(pokeName: String) {
         PokemonLabel.text = pokeName
+        downloadImage(with: pokeName)
     }
     
     func configureLayout() {
@@ -57,5 +59,22 @@ class PokemonCell: UICollectionViewCell {
             PokemonLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         
         ])
+    }
+    
+    func downloadImage(with pokename: String){
+        guard let url = URL(string: "\(Constants.pictureURL)\(pokename).png") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data , _ , error in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.ImageView.image = UIImage(data: data)
+            }
+        }
+        task.resume()
+    }
+    
+    override func prepareForReuse() {
+        PokemonLabel.text = nil
+        ImageView.image = nil
     }
 }
