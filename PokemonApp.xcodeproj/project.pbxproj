@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		649D47192AE0527800067E02 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D47182AE0527800067E02 /* NetworkManager.swift */; };
+		649D471B2AE052DA00067E02 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D471A2AE052DA00067E02 /* Constants.swift */; };
 		64FB61932ADDD46C00847ACE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB61922ADDD46C00847ACE /* AppDelegate.swift */; };
 		64FB61952ADDD46C00847ACE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB61942ADDD46C00847ACE /* SceneDelegate.swift */; };
 		64FB61972ADDD46C00847ACE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB61962ADDD46C00847ACE /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		649D47182AE0527800067E02 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		649D471A2AE052DA00067E02 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		64FB618F2ADDD46C00847ACE /* PokemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64FB61922ADDD46C00847ACE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64FB61942ADDD46C00847ACE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		64FB61AA2ADDD4C200847ACE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				649D47182AE0527800067E02 /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 		64FB61AB2ADDD4C800847ACE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				649D471A2AE052DA00067E02 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -194,9 +200,11 @@
 				64FB61972ADDD46C00847ACE /* ViewController.swift in Sources */,
 				64FB61B02ADDD65400847ACE /* PokemonViewController.swift in Sources */,
 				64FB61B22ADDD66000847ACE /* PokemonViewModel.swift in Sources */,
+				649D47192AE0527800067E02 /* NetworkManager.swift in Sources */,
 				64FB61AE2ADDD62A00847ACE /* Pokemon.swift in Sources */,
 				64FB61932ADDD46C00847ACE /* AppDelegate.swift in Sources */,
 				64FB61952ADDD46C00847ACE /* SceneDelegate.swift in Sources */,
+				649D471B2AE052DA00067E02 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
