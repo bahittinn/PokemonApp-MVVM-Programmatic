@@ -8,6 +8,6 @@
 import Foundation
 
 enum Constants {
-    static let apiurl = "https://pokeapi.co/api/v2/pokemon?offset=40&limit=20"
+    static let apiurl = "https://pokeapi.co/api/v2/pokemon?offset=40&limit=21"
     static let pictureURL = "https://randompokemon.com/sprites/normal/"
 }

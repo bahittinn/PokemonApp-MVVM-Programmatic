@@ -14,6 +14,7 @@ protocol PokemonViewControllerInterface: AnyObject {
     func reloadCollectionView()
 }
 
+
 class PokemonViewController: UIViewController {
 
     private var collectionView: UICollectionView!
@@ -74,5 +75,12 @@ extension PokemonViewController: UICollectionViewDelegate, UICollectionViewDataS
         let pokemon = viewmodel.pokemons[indexPath.row].name
         cell.setCell(pokeName: pokemon ?? "weedle")
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = PokemonDetailController()
+        let pokemon = viewmodel.pokemons[indexPath.row]
+        vc.viewmodel.pokemon = pokemon
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

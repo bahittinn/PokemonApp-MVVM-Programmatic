@@ -14,6 +14,7 @@ protocol PokemonDetailControllerInterface: AnyObject {
 class PokemonDetailController: UIViewController {
     
     var viewmodel = PokemonDetailViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +25,6 @@ class PokemonDetailController: UIViewController {
 
 extension PokemonDetailController: PokemonDetailControllerInterface {
     func configure() {
-        print("configure")
+        view.backgroundColor = .systemBackground
     }
 }
