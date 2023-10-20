@@ -14,7 +14,6 @@ protocol PokemonDetailViewModelInterFace {
 }
 
 
-
 class PokemonDetailViewModel  {
     weak var view: PokemonDetailControllerInterface?
     
@@ -24,9 +23,8 @@ class PokemonDetailViewModel  {
 
 extension PokemonDetailViewModel: PokemonDetailViewModelInterFace {
     func viewDidLoad() {
-        view?.configure()
-        view?.configurePokemonImage()
         fetchDetail()
+        view?.configure()
     }
     
     func fetchDetail() {
@@ -35,6 +33,7 @@ extension PokemonDetailViewModel: PokemonDetailViewModelInterFace {
             switch response {
             case .success(let details):
                 self.detailInfo = details
+                self.view?.fillText()
             case .failure(let error):
                 print(error.localizedDescription)
             }

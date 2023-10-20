@@ -36,7 +36,6 @@ extension PokemonViewModel: PokemonViewModelInterface {
                 DispatchQueue.main.async {
                     self.view?.reloadCollectionView()
                 }
-
             case .failure(let error):
                 print(error)
             }
