@@ -10,6 +10,7 @@ import Foundation
 struct PokemonDetail: Codable {
     let abilities: [AbilityElement]?
     let weight: Int?
+    let height: Int?
 }
 
 // MARK: - AbilityElement
