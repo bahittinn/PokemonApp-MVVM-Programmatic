@@ -28,6 +28,14 @@ extension PokemonDetailViewModel: PokemonDetailViewModelInterFace {
     }
     
     func fetchDetail() {
-        print(pokemon.name!)
+        guard let name = pokemon.name else { return }
+        NetworkManager.shared.FetchPokemonDetail(with: name) { response in
+            switch response {
+            case .success(let details):
+                print(details)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
