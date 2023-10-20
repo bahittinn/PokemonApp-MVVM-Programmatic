@@ -32,7 +32,7 @@ extension PokemonDetailController: PokemonDetailControllerInterface {
     
     func configurePokemonImage() {
         view.addSubview(PokemonImage)
-
+        PokemonImage.downloadImage(with: viewmodel.pokemon.name ?? "N/A")
         NSLayoutConstraint.activate([
             PokemonImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             PokemonImage.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),

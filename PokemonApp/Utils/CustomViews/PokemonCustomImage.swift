@@ -21,7 +21,20 @@ class PokemonCustomImage: UIImageView {
     private func configure() {
         layer.cornerRadius = 10
         clipsToBounds      = true
+        contentMode        = .scaleAspectFit
         image              = UIImage(systemName: "bell")
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func downloadImage(with pokename: String){
+        guard let url = URL(string: "\(Constants.pictureURL)\(pokename).png") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data , _ , error in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data)
+            }
+        }
+        task.resume()
     }
 }
