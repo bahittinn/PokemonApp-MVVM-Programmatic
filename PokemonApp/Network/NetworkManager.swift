@@ -31,4 +31,12 @@ class NetworkManager {
         task.resume()
         
     }
+    
+    func FetchPokemonDetail(with name: String, completion: @escaping () -> ()) {
+        guard let url = URL(string: "\(Constants.apiurl)/\(name)") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data , _ , error in
+            <#code#>
+        }
+    }
 }
