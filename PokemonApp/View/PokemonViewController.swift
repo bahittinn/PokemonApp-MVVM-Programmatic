@@ -27,6 +27,10 @@ class PokemonViewController: UIViewController {
         viewmodel.view = self
         viewmodel.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
 }
 
 extension PokemonViewController: PokemonViewControllerInterface {

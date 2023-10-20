@@ -21,8 +21,9 @@ class PokemonCustomImage: UIImageView {
     private func configure() {
         layer.cornerRadius = 10
         clipsToBounds      = true
-        contentMode        = .scaleAspectFit
+        contentMode        = .scaleToFill
         image              = UIImage(systemName: "bell")
+        backgroundColor    = .systemGray6
         translatesAutoresizingMaskIntoConstraints = false
     }
     

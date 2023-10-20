@@ -19,6 +19,7 @@ class PokemonDetailViewModel  {
     weak var view: PokemonDetailControllerInterface?
     
     var pokemon: Pokemons!
+    var detailInfo: PokemonDetail!
 }
 
 extension PokemonDetailViewModel: PokemonDetailViewModelInterFace {
@@ -29,11 +30,11 @@ extension PokemonDetailViewModel: PokemonDetailViewModelInterFace {
     }
     
     func fetchDetail() {
-        guard let name = pokemon.name else { return }
+        guard let name = pokemon.name else { return }
         NetworkManager.shared.FetchPokemonDetail(with: name) { response in
             switch response {
             case .success(let details):
-                print(details)
+                self.detailInfo = details
             case .failure(let error):
                 print(error.localizedDescription)
             }
