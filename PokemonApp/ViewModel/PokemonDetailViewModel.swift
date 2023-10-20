@@ -24,6 +24,7 @@ class PokemonDetailViewModel  {
 extension PokemonDetailViewModel: PokemonDetailViewModelInterFace {
     func viewDidLoad() {
         view?.configure()
+        view?.configurePokemonImage()
         fetchDetail()
     }
     
